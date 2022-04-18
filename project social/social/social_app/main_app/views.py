@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import *
 
 def dashboard(request):
-    return render(request, "base.html")
+    return render(request, "dashboard.html")
 
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)

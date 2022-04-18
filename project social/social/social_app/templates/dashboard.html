@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column">
+    {% for followed in user.profile.follows.all %}
+        {% for comment in followed.user.comments.all %}
+            <div class="box">
+                {{ comment.body }}
+                <span class="is-small has-text-grey-light">
+                    ({{ comment.created_at }} by {{ comment.user.username }}
+                </span>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+{% endblock content %}
