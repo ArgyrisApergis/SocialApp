@@ -1,8 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
+from .forms import CommentForm
 
 def dashboard(request):
-    return render(request, "dashboard.html")
+    form = CommentForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            dweet = form.save(commit=False)
+            dweet.user = request.user
+            dweet.save()
+            return redirect("main_app:dashboard")
+
+    followed_comments = Comments.objects.filter(user__profile__in=request.user.profile.follows.all()).order_by("-created_at")
+
+    return render(request,"dashboard.html",{"form": form, "comments": followed_comments},)
 
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
