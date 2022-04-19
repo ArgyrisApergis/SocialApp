@@ -1,7 +1,47 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import CommentForm
+from .forms import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
 
+def register(request):
+    form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('main_app:dashboard')
+    return render(request, 'register.html', {'form': form})
+
+
+def login(request):
+    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+
+                return redirect("main_app:dashboard")
+            else:
+                return redirect("main_app:login")
+        else:
+            form = LoginForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'login.html', context)
+
+
+# def user_logout(request):
+#     auth.logout(request)
+#     return redirect('main_app:login')
+
+
+@login_required(login_url='login')
 def dashboard(request):
     form = CommentForm(request.POST or None)
     if request.method == "POST":
@@ -15,10 +55,12 @@ def dashboard(request):
 
     return render(request,"dashboard.html",{"form": form, "comments": followed_comments},)
 
+@login_required(login_url='login')
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, "profile_list.html", {"profiles": profiles})
 
+@login_required(login_url='login')
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)

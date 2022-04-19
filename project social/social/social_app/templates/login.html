@@ -12,20 +12,18 @@
         <div class="hero-body">
             <h1 class="title is-1">Dwitter</h1>
             <p class="subtitle is-4">
-                Your tiny social network built with Django <br>
-                Hello, {{ user.username|default:'Guest' }}!
+                Your tiny social network built with Django
             </p>
         </div>
     </section>
-
-    <div class="container">
+     <div class="container">
         <div class="columns">
-
-            {% block content %}
-            
-            {% endblock content %}
-
-        </div>
-    </div>
-</body>
+            <h2>Login</h2>
+            <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+            </form>
+        <a href="{% url 'main_app:register' %}">Not registered yet? <br>Click here to register</a>
+    </body>
 </html>
