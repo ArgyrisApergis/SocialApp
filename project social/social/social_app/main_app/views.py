@@ -38,13 +38,12 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-# def user_logout(request):
-#     logout(request)
-#     context = {}
-#     return render(request, 'main_app:login', context
+def user_logout(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect("main_app:login")
 
-
-@login_required(login_url='login')
+@login_required(login_url='http://127.0.0.1:8000/')
 def dashboard(request):
     form = CommentForm(request.POST or None)
     if request.method == "POST":
@@ -58,12 +57,12 @@ def dashboard(request):
 
     return render(request,"dashboard.html",{"form": form, "comments": followed_comments},)
 
-@login_required(login_url='login')
+@login_required(login_url='http://127.0.0.1:8000/')
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, "profile_list.html", {"profiles": profiles})
 
-@login_required(login_url='login')
+@login_required(login_url='http://127.0.0.1:8000/')
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)

@@ -15,6 +15,14 @@
                 Your tiny social network built with Django <br>
                 Hello, {{ user.username|default:'Guest' }}!
             </p>
+        <form action="{% url 'main_app:user_logout' %}" method="Post">
+            {% csrf_token %}
+        <button class="button is-danger" type="submit"
+                name="logout"
+                value="logout">
+            Logout
+        </button>
+        </form>
         </div>
     </section>
 
