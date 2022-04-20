@@ -4,6 +4,7 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
+from django.contrib.auth import logout
 
 def register(request):
     form = RegisterForm()
@@ -38,8 +39,9 @@ def login(request):
 
 
 # def user_logout(request):
-#     auth.logout(request)
-#     return redirect('main_app:login')
+#     logout(request)
+#     context = {}
+#     return render(request, 'main_app:login', context
 
 
 @login_required(login_url='login')
