@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
+from django.contrib.auth import login as django_login
 
 def register(request):
     form = RegisterForm()
@@ -23,7 +24,7 @@ def login(request):
             password = request.POST.get('password')
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                login(request, user)
+                django_login(request, user)
 
                 return redirect("main_app:dashboard")
             else:
