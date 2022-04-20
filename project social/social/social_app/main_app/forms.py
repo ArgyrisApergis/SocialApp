@@ -23,3 +23,13 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'password1', 'password2']
         widgets = {'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'})}
+
+class PetForm(forms.ModelForm):
+    class Meta:
+        model = Pet
+        fields = ('name',)
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ('image',)

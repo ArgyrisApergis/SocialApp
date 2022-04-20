@@ -15,3 +15,12 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
 admin.site.register(Comments)
+
+class ImageInline(admin.TabularInline):
+    model = Image
+
+@admin.register(Pet)
+class PetAdmin(admin.ModelAdmin):
+    inlines = [
+        ImageInline
+    ]
