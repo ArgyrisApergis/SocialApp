@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout
+from django.forms import modelformset_factory
+from django.http import HttpResponseRedirect
 
 def register(request):
     form = RegisterForm()
@@ -81,16 +83,12 @@ def profile(request, pk):
     return render(request, "profile.html", {"profile": profile})
 
 
-
-from django.forms import modelformset_factory
-from django.http import HttpResponseRedirect
-
 def gallery_view(request, pk):
     pet = Pet.objects.get(id=pk)
     return render(request, 'gallery.html', {"pet":pet})
 
 def add_pet_view(request):
-    ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=3)
+    ImageFormSet = modelformset_factory(Image, form=ImageForm)
 
     if request.method == "GET":
         pet_form = PetForm()
