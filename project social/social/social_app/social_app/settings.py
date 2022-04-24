@@ -126,15 +126,3 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-MEDIA_URL = 'media/'
-
-DJANGORESIZED_DEFAULT_SIZE = [800,800]
-DJANGORESIZED_DEFAULT_QUALITY = 75
-DJANGORESIZED_DEFAULT_KEEP_META = True
-DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
-DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
-DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
