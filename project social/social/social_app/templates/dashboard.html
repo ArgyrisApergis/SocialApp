@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="column">
-    <h1> At the moment the Topic is : </h1>
-    <h2>" What would be your weapon of choice in a zombie apocalypse? "<br></h2>
+    <h1 class= "is-size-4 has-text"> At the moment the Topic is : </h1>
+    <h2 class= "is-size-5 has-text">" What would be your weapon of choice in a zombie apocalypse? "<br></h2>
 
     {% for followed in user.profile.follows.all %}
         {% for comment in followed.user.comments.all %}

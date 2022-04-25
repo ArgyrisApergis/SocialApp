@@ -49,9 +49,9 @@ def dashboard(request):
     form = CommentForm(request.POST or None)
     if request.method == "POST":
         if form.is_valid():
-            dweet = form.save(commit=False)
-            dweet.user = request.user
-            dweet.save()
+            qweet = form.save(commit=False)
+            qweet.user = request.user
+            qweet.save()
             return redirect("main_app:dashboard")
 
     followed_comments = Comments.objects.filter(user__profile__in=request.user.profile.follows.all()).order_by("-created_at")

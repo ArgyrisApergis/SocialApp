@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>Dwitter</title>
+    <title>Qwitter</title>
 </head>
 <body>
     <section class="hero is-small is-success mb-4">
         <div class="hero-body">
-            <h1 class="title is-1">Dwitter</h1>
+            <h1 class="title is-1">Qwitter</h1>
             <p class="subtitle is-4">
-                Your tiny social network built with Django <br>
+                Exit light enter Django <br>
             </p>
         <a href="{% url 'main_app:login' %}">
         <button class="button is-warning " type="submit"
@@ -25,8 +25,8 @@
     </section>
 
     <div class="column">
-        <h1> At the moment the Topic is : </h1>
-    <h2>" What would be your weapon of choice in a zombie apocalypse? "<br></h2>
+        <h1 class= "is-size-4 has-text"> At the moment the Topic is : </h1>
+    <h2 class= "is-size-5 has-text">" What would be your weapon of choice in a zombie apocalypse? "<br></h2>
             {% for comment in comments %}
                 <div class="box">
                     {{comment.body}}

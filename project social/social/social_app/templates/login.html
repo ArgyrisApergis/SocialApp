@@ -5,27 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>Dwitter</title>
+    <title>Qwitter</title>
 </head>
 <body>
 <a href="{% url 'main_app:dash_home' %}">
     <section class="hero is-small is-success mb-4">
         <div class="hero-body">
-            <h1 class="title is-1">Dwitter</h1>
+            <h1 class="title is-1">Qwitter</h1>
             <p class="subtitle is-4">
-                Your tiny social network built with Django
+                Exit light enter Django
             </p>
         </div>
     </section>
 </a>
-     <div class="container">
-        <div class="columns">
-            <h2>Login</h2>
+     <div class="column">
+         <div class="column is-one-third">
+            <h2 class= "is-size-5">Login</h2><br>
             <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Login">
             </form>
         <a href="{% url 'main_app:register' %}">Not registered yet? <br>Click here to register</a>
+        </div>
+    </div>
     </body>
 </html>

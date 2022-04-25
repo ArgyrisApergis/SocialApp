@@ -1,6 +1,10 @@
-<h1>Donate Us</h1>
+{% extends 'base.html' %}
 
-<h2>The wise quote of the day is :</h2>
+{% block content %}
+<div class="column">
+<h1 class= "is-size-3 has-text">Thank you for donating us!</h1><br>
+
+<h2 class= "is-size-4 has-text">The wise quote of the day is :</h2>
     <h3> {{object}}
 <!-- <h3>{% for value in object %}
         {% for i in value %}
@@ -8,10 +12,9 @@
         {% endfor %}
         {% endfor %} -->
     </h3>
-<h3>
-    {{price}}$
-</h3>
-
+<h1 class= "is-size-3 has-text"><br>
+    Donation cost : {{price}}$
+</h1><br>
   <!-- Set up a container element for the button -->
   <div id="paypal-button-container" style="max-width: 300px;"></div>
 
@@ -52,8 +55,36 @@
 
       }).render('#paypal-button-container');
   </script>
+</div>
 
+<div class="column is-one-third">
 
+    <div class="block">
+        <a href="{% url 'main_app:profile_list' %} ">
+            <button class="button is-dark is-outlined is-fullwidth">
+                All Profiles
+            </button>
+        </a>
+    </div>
+
+    <div class="block">
+        <a href="{% url 'main_app:profile' request.user.profile.id %} ">
+            <button class="button is-dark is-outlined is-fullwidth">
+                My Profile
+            </button>
+        </a>
+    </div>
+
+    <div class="block">
+    <a href="{% url 'main_app:dashboard' %} ">
+        <button class="button is-dark is-outlined is-fullwidth">
+            Dashboard
+        </button>
+    </a>
+  </div>
+</div>
+
+{% endblock content %}
 <!-- Links -->
 
 <!-- Buttons and code -->
@@ -71,4 +102,4 @@
 
 
 <!-- Popups settings conf -->
-<!-- SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+<!-- SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'  
