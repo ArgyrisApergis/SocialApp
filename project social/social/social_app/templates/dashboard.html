@@ -7,7 +7,7 @@
     <h2>" What would be your weapon of choice in a zombie apocalypse? "<br></h2>
 
     {% for followed in user.profile.follows.all %}
-        {% for comment in comments %}
+        {% for comment in followed.user.comments.all %}
             <div class="box">
                 {{comment.body}}
                 <span class="is-small has-text-grey-light">
