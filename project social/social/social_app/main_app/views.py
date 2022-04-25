@@ -13,7 +13,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('main_app:dashboard')
+        return redirect('main_app:login')
     return render(request, 'register.html', {'form': form})
 
 
