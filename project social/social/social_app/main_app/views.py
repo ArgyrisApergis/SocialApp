@@ -91,6 +91,16 @@ def donate(request):
     context = {
     'object': object,'price': price}
     return render(request,'donate.html', context)
+    
+def donate2(request):
+    price = 2
+    url = "https://api.kanye.rest"
+    r = requests.get(url)
+    object = r.json()
+   
+    context = {
+    'object': object,'price': price}
+    return render(request,'donate2.html', context)
 
 
 def dash_home(request):

@@ -14,4 +14,5 @@ urlpatterns = [
     path("profile_list/", profile_list, name="profile_list"),
     path("profile/<int:pk>", profile, name="profile"),
     path("donate", donate, name= "donate"),
+    path("donate2", donate2, name= "donate2"),
 ]
