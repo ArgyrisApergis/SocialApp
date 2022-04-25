@@ -1,0 +1,73 @@
+<h1>Donate Us</h1>
+
+<h2>The wise quote of the day is :</h2>
+    <h3>{% for value in object %}
+        {% for i in value %}
+        {{i}}
+        {% endfor %}
+        {% endfor %}
+    </h3>
+<h3>
+    {{price}}$
+</h3>
+
+  <!-- Set up a container element for the button -->
+  <div id="paypal-button-container" style="max-width: 300px;"></div>
+
+  <!-- Include the PayPal JavaScript SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AblrRu-SEASyy9y7dMCcVm4MuVSDUzwl3jLh-sWUFe_myrIeYKGEqSnosFHEtMrwNb4XYDPZqPr4JrKh&currency=USD"></script>
+
+  <script>
+      // Render the PayPal button into #paypal-button-container
+      paypal.Buttons({
+
+          // Set up the transaction
+          createOrder: function(data, actions) {
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value:  '{{price}}'
+                      }
+                  }]
+              });
+          },
+
+          // Finalize the transaction
+          onApprove: function(data, actions) {
+              return actions.order.capture().then(function(orderData) {
+                  // Successful capture! For demo purposes:
+                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                  var transaction = orderData.purchase_units[0].payments.captures[0];
+                  alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+                  // Replace the above to show a success message within this page, e.g.
+                  // const element = document.getElementById('paypal-button-container');
+                  // element.innerHTML = '';
+                  // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                  // Or go to another URL:  actions.redirect('thank_you.html');
+              });
+          }
+
+
+      }).render('#paypal-button-container');
+  </script>
+
+
+<!-- Links -->
+
+<!-- Buttons and code -->
+<!-- https://developer.paypal.com/demo/checkout/#/pattern/client -->
+
+
+<!-- Paypall -->
+<!-- Create business and buer account -->
+<!-- Create app for business account -->
+<!-- Add clinet-id in code -->
+<!-- https://developer.paypal.com/developer/accounts/ -->
+
+<!-- Sandbox accounts -->
+<!-- https://www.sandbox.paypal.com/gr/home -->
+
+
+<!-- Popups settings conf -->
+<!-- SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'

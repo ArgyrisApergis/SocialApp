@@ -5,8 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout
-# from django.forms import modelformset_factory
-# from django.http import HttpResponseRedirect
+import requests
 
 def register(request):
     form = RegisterForm()
@@ -82,3 +81,21 @@ def profile(request, pk):
         current_user_profile.save()
     return render(request, "profile.html", {"profile": profile})
 
+
+def donate(request):
+    price = 2
+    url = "https://api.kanye.rest"
+    r = requests.get(url)
+    object = r.json()
+   
+    context = {
+    'object': object,'price': price}
+    return render(request,'donate.html', context)
+
+
+def dash_home(request):
+    comments = Comments.objects.all().order_by("-created_at")
+    context = {'comments':comments}
+    return render(request,"dash_home.html",context)
+    
+    

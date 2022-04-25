@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Dwitter</title>
+</head>
+<body>
+    <section class="hero is-small is-success mb-4">
+        <div class="hero-body">
+            <h1 class="title is-1">Dwitter</h1>
+            <p class="subtitle is-4">
+                Your tiny social network built with Django <br>
+            </p>
+        <a href="{% url 'main_app:login' %}">
+        <button class="button is-warning " type="submit"
+                name="login"
+                value="login">
+            Login to Comment
+        </button>
+        </a>
+        </div>
+    </section>
+
+    <h1> At the moment the Topic is : </h1>
+
+
+    <div class="column">
+            {% for comment in comments %}
+                <div class="box">
+                    {{comment.body}}
+                    <span class="is-small has-text-grey-light">
+                        ({{ comment.created_at }} by {{ comment.user.username }}
+                    </span>
+                </div>
+            {% endfor %}
+    </div>
+
+    
+</body>
+</html>

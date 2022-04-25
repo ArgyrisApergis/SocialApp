@@ -36,6 +36,8 @@
 </div>
 
 <div class="column is-one-third">
+
+  <div class="block">
   <a href="{% url 'main_app:dashboard' %} ">
       <button class="button is-dark is-outlined is-fullwidth">
           Dashboard
@@ -43,4 +45,13 @@
   </a>
 </div>
 
+  <div class="block">
+    <a href="{% url 'main_app:donate' %} ">
+      <button class="button is-info is-outlined is-fullwidth">
+          Donate Us
+      </button>
+    </a>
+  </div>
+  
+</div>
 {% endblock content %}
