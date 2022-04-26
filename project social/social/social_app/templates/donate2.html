@@ -31,16 +31,13 @@
     </div>
 </section>
 
+<div class="container">
 <div class="column">
 <h1 class= "is-size-3 has-text">Thank you for donating us!</h1><br>
 
 <h2 class= "is-size-4 has-text">The wise quote of the day is :</h2>
     <h3> {{object}}
-<!-- <h3>{% for value in object %}
-        {% for i in value %}
-        {{i}}
-        {% endfor %}
-        {% endfor %} -->
+
     </h3>
 <h1 class= "is-size-3 has-text"><br>
     Donation cost : {{price}}$
@@ -73,18 +70,15 @@
                   console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                   var transaction = orderData.purchase_units[0].payments.captures[0];
                   alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-                  // Replace the above to show a success message within this page, e.g.
-                  // const element = document.getElementById('paypal-button-container');
-                  // element.innerHTML = '';
-                  // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                  // Or go to another URL:  actions.redirect('thank_you.html');
+                alert('Thank you for your donating 1000$ to our site!');
+              
               });
           }
 
 
       }).render('#paypal-button-container');
   </script>
+</div>
 </div>
 
 <!-- Links -->

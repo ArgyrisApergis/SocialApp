@@ -89,7 +89,7 @@ def donate(request):
     object = r.json()
    
     context = {
-    'object': object,'price': price}
+    'object': object['quote'],'price': price}
     return render(request,'donate.html', context)
     
 def donate2(request):
@@ -99,7 +99,7 @@ def donate2(request):
     object = r.json()
    
     context = {
-    'object': object,'price': price}
+    'object': object['quote'],'price': price}
     return render(request,'donate2.html', context)
 
 
