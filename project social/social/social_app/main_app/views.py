@@ -81,7 +81,7 @@ def profile(request, pk):
         current_user_profile.save()
     return render(request, "profile.html", {"profile": profile})
 
-
+@login_required(login_url='http://127.0.0.1:8000/')
 def donate(request):
     price = 2
     url = "https://api.kanye.rest"
