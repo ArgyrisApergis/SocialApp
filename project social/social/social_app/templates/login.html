@@ -5,10 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Qwitter</title>
 </head>
 <body>
-<a href="{% url 'main_app:dash_home' %}">
+    {% load crispy_forms_tags %}
+    <style>
+        body{
+            background: rgb(250, 250, 250);
+    background: radial-gradient(circle, rgb(236, 236, 238) 0%, rgb(243, 243, 246) 0%, rgba(0,212,255,1) 100%);
+    
+    }
+
+    .card {
+            padding: 20px;
+            background-color: white;
+            width: 300px;
+            height: 360px;
+            border-radius: 10px;
+            margin-bottom: 100px;
+            display: flex;
+            justify-content:center;
+            flex-direction: column;
+        }
+    </style>
+    
+<a href="{% url 'main_app:dash_home' %}" style="text-decoration: none;">
     <section class="hero is-small is-success mb-4">
         <div class="hero-body">
             <h1 class="title is-1">Qwitter</h1>
@@ -21,13 +43,18 @@
      <div class="column">
          <div class="column is-one-third">
             <h2 class= "is-size-5">Login</h2><br>
-            <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Login">
-            </form>
-        <a href="{% url 'main_app:register' %}">Not registered yet? <br>Click here to register</a>
+            <div class="card" style="max-width: 400px;">
+                <form action="" method="post">
+                    
+                    {% csrf_token %}
+                    {{form|crispy}}
+            
+                    <br>
+                
+                    <button type="submit">Submit</button><br>
+                    <a href="{% url 'main_app:register' %}">Not registered yet? <br>Click here to register</a>
+                </form>
+            </div>
+            </div>
         </div>
-    </div>
-    </body>
 </html>
