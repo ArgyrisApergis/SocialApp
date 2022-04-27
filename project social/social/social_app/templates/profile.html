@@ -64,6 +64,14 @@ background: radial-gradient(circle, rgb(236, 236, 238) 0%, rgb(243, 243, 246) 0%
         </a>
     </div>
 
+    <div class="block">
+        <a href="{% url 'main_app:profile' request.user.profile.id %} ">
+            <button class="button is-dark is-outlined is-fullwidth">
+                My Profile
+            </button>
+        </a>
+    </div>
+
         <div class="block">
         <a href="{% url 'main_app:dashboard' %} ">
             <button class="button is-dark is-outlined is-fullwidth">
