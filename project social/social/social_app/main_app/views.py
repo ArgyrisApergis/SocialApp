@@ -104,6 +104,7 @@ def donate2(request):
 
 
 def dash_home(request):
+    logout(request)
     comments = Comments.objects.all().order_by("-created_at")
     context = {'comments':comments}
     return render(request,"dash_home.html",context)
