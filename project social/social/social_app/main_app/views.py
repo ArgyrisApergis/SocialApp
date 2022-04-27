@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout
 import requests
+from api.models import *
+from api.serializers import *
 
 def register(request):
     form = RegisterForm()
@@ -84,20 +86,17 @@ def profile(request, pk):
 @login_required(login_url='http://127.0.0.1:8000/')
 def donate(request):
     price = 2
-    url = "https://api.kanye.rest"
-    r = requests.get(url)
-    object = r.json()
-   
+    object1 = Quotes.objects.all()
+    object= random.choice(object1.values())
     context = {
     'object': object['quote'],'price': price}
     return render(request,'donate.html', context)
-    
+
+import random   
 def donate2(request):
     price = 2
-    url = "https://api.kanye.rest"
-    r = requests.get(url)
-    object = r.json()
-   
+    object1 = Quotes.objects.all()
+    object= random.choice(object1.values())
     context = {
     'object': object['quote'],'price': price}
     return render(request,'donate2.html', context)
