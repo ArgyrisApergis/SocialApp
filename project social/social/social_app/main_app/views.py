@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout
-import requests
+import random 
 from api.models import *
 from api.serializers import *
 
@@ -91,8 +91,7 @@ def donate(request):
     context = {
     'object': object['quote'],'price': price}
     return render(request,'donate.html', context)
-
-import random   
+   
 def donate2(request):
     price = 2
     object1 = Quotes.objects.all()
